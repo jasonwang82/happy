@@ -392,6 +392,7 @@ export const zhHans: TranslationStructure = {
         agent: {
             claude: 'Claude',
             codex: 'Codex',
+            codebuddy: 'CodeBuddy',
         },
         model: {
             title: '模型',

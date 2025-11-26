@@ -390,6 +390,7 @@ export const es: TranslationStructure = {
         agent: {
             claude: 'Claude',
             codex: 'Codex',
+            codebuddy: 'CodeBuddy',
         },
         model: {
             title: 'MODELO',

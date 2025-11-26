@@ -400,6 +400,7 @@ export const ru: TranslationStructure = {
         agent: {
             claude: 'Claude',
             codex: 'Codex',
+            codebuddy: 'CodeBuddy',
         },
         model: {
             title: 'МОДЕЛЬ',
