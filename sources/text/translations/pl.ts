@@ -137,6 +137,7 @@ export const pl: TranslationStructure = {
         githubConnected: ({ login }: { login: string }) => `Połączono jako @${login}`,
         connectGithubAccount: 'Połącz konto GitHub',
         claudeAuthSuccess: 'Pomyślnie połączono z Claude',
+        codeBuddyAuthSuccess: 'Pomyślnie połączono z CodeBuddy',
         exchangingTokens: 'Wymiana tokenów...',
         usage: 'Użycie',
         usageSubtitle: 'Zobacz użycie API i koszty',
