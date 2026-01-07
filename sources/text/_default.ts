@@ -126,6 +126,7 @@ export const en = {
         githubConnected: ({ login }: { login: string }) => `Connected as @${login}`,
         connectGithubAccount: 'Connect your GitHub account',
         claudeAuthSuccess: 'Successfully connected to Claude',
+        codeBuddyAuthSuccess: 'Successfully connected to CodeBuddy',
         exchangingTokens: 'Exchanging tokens...',
         usage: 'Usage',
         usageSubtitle: 'View your API usage and costs',
@@ -389,6 +390,7 @@ export const en = {
         agent: {
             claude: 'Claude',
             codex: 'Codex',
+            codebuddy: 'CodeBuddy',
         },
         model: {
             title: 'MODEL',

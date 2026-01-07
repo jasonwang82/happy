@@ -22,6 +22,7 @@ const flavorIcons = {
     claude: require('@/assets/images/icon-claude.png'),
     codex: require('@/assets/images/icon-gpt.png'),
     gemini: require('@/assets/images/icon-gemini.png'),
+    codebuddy: require('@/assets/images/icon-codebuddy.png'),
 };
 
 const styles = StyleSheet.create((theme) => ({
@@ -73,7 +74,9 @@ export const Avatar = React.memo((props: AvatarProps) => {
                 ? Math.round(size * 0.25)
                 : effectiveFlavor === 'claude'
                     ? Math.round(size * 0.28)
-                    : Math.round(size * 0.35);
+                    : effectiveFlavor === 'codebuddy'
+                        ? Math.round(size * 0.28)
+                        : Math.round(size * 0.35);
 
             return (
                 <View style={[styles.container, { width: size, height: size }]}>
@@ -119,7 +122,9 @@ export const Avatar = React.memo((props: AvatarProps) => {
         ? Math.round(size * 0.25)
         : effectiveFlavor === 'claude'
             ? Math.round(size * 0.28)
-            : Math.round(size * 0.35);
+            : effectiveFlavor === 'codebuddy'
+                ? Math.round(size * 0.28)
+                : Math.round(size * 0.35);
 
     // Only wrap in container if showing flavor icons
     if (showFlavorIcons) {

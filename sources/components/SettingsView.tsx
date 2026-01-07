@@ -146,6 +146,7 @@ export const SettingsView = React.memo(function SettingsView() {
     // Connection status
     const isGitHubConnected = !!profile.github;
     const isAnthropicConnected = profile.connectedServices?.includes('anthropic') || false;
+    const isCodeBuddyConnected = profile.connectedServices?.includes('codebuddy') || false;
 
     // GitHub connection
     const [connectingGitHub, connectGitHub] = useHappyAction(async () => {
@@ -179,6 +180,24 @@ export const SettingsView = React.memo(function SettingsView() {
         );
         if (confirmed) {
             await disconnectService(auth.credentials!, 'anthropic');
+            await sync.refreshProfile();
+        }
+    });
+
+    // CodeBuddy connection
+    const [connectingCodeBuddy, connectCodeBuddy] = useHappyAction(async () => {
+        router.push('/settings/connect/codebuddy');
+    });
+
+    // CodeBuddy disconnection
+    const [disconnectingCodeBuddy, handleDisconnectCodeBuddy] = useHappyAction(async () => {
+        const confirmed = await Modal.confirm(
+            t('modals.disconnectService', { service: 'CodeBuddy' }),
+            t('modals.disconnectServiceConfirm', { service: 'CodeBuddy' }),
+            { confirmText: t('modals.disconnect'), destructive: true }
+        );
+        if (confirmed) {
+            await disconnectService(auth.credentials!, 'codebuddy');
             await sync.refreshProfile();
         }
     });
@@ -300,6 +319,23 @@ export const SettingsView = React.memo(function SettingsView() {
                     }
                     onPress={isAnthropicConnected ? handleDisconnectAnthropic : connectAnthropic}
                     loading={connectingAnthropic || disconnectingAnthropic}
+                    showChevron={false}
+                />
+                <Item
+                    title="CodeBuddy Code"
+                    subtitle={isCodeBuddyConnected
+                        ? t('settingsAccount.statusActive')
+                        : t('settings.connectAccount')
+                    }
+                    icon={
+                        <Image
+                            source={require('@/assets/images/icon-codebuddy.png')}
+                            style={{ width: 29, height: 29 }}
+                            contentFit="contain"
+                        />
+                    }
+                    onPress={isCodeBuddyConnected ? handleDisconnectCodeBuddy : connectCodeBuddy}
+                    loading={connectingCodeBuddy || disconnectingCodeBuddy}
                     showChevron={false}
                 />
                 <Item
